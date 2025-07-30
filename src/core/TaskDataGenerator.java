@@ -77,7 +77,7 @@ public class TaskDataGenerator {
         return Arrays.asList(task1, task2, task3, task4, task5);
     }
     
-    public static void main(String[] args) {
+    public static void test() {
         List<Task> sampleTasks = generateSampleTasks();
         for (Task task : sampleTasks) {
             System.out.println(task);

@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Task;
 
-class TaskManager{
+public class TaskManager{
     private List<Task> tasks;  
     public boolean addTask(Task t){
         return tasks.add(t);
