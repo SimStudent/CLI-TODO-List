@@ -13,7 +13,7 @@ public class HelpCommand implements Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args,AppContext context) {
         // TODO Finish the method.
     }
 

@@ -1,5 +1,6 @@
 import model.*;
 import core.*;
+import parser.AppContext;
 import parser.CommandParser;
 import parser.HelpCommand;
 import parser.ListCommand;
@@ -12,7 +13,7 @@ public class App {
         }
 
         TaskManager m = new TaskManager();
-        CommandParser c = new CommandParser(m);
+        CommandParser c = new CommandParser(new AppContext(m));
         // TaskDataGenerator.test();
 
         // You should be add the command to the parser so that it can find your command.

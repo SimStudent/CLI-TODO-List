@@ -1,18 +1,26 @@
 package parser;
 
 import java.util.*;
-import core.*;
 
 public class CommandParser {
     // TODO 改为泛型的格式
-    private TaskManager taskManager;
+    // private TaskManager taskManager;
+
+    private AppContext taskManagerContext;
+
     private List<Command> commandList;
     private static String noneCommandto = "help";
 
-    public CommandParser(TaskManager m){
-        taskManager = m;
+    // public CommandParser(TaskManager m){
+    //     taskManager = m;
+    //     commandList = new ArrayList<Command>();
+    // }
+
+    public CommandParser(AppContext t){
+        taskManagerContext = t;
         commandList = new ArrayList<Command>();
     }
+
     public void add(Command command){
         commandList.add(command);
     }
@@ -27,7 +35,7 @@ public class CommandParser {
             for(Command command : commandList){
                 // if(noneCommandto == command.getName())
                 if(noneCommandto.equals(command.getName())){
-                    command.execute(args);
+                    command.execute(args,taskManagerContext);
                     return;
                 }
             }
@@ -37,7 +45,7 @@ public class CommandParser {
         for(Command command : commandList){
             // if(args[0] == command.getName()){
             if(args[0].equals(command.getName())){
-                command.execute(args);
+                command.execute(args,taskManagerContext);
                 return;   
             }
         }
