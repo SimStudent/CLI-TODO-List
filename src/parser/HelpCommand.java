@@ -1,5 +1,7 @@
 package parser;
 
+import java.util.List;
+
 public class HelpCommand implements Command {
 
     @Override
@@ -15,6 +17,9 @@ public class HelpCommand implements Command {
     @Override
     public void execute(String[] args,AppContext context) {
         // TODO Finish the method.
+        System.out.println("-- This is Help Panel--");
+        List<Command> l = context.getCommandList();
+        for(Command c: l){System.out.println(c.getName()+"    "+c.getDescription());}
     }
 
     

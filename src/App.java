@@ -1,5 +1,5 @@
 import model.*;
-import core.*;
+import core.TaskManager;
 import parser.AppContext;
 import parser.CommandParser;
 import parser.HelpCommand;
@@ -13,7 +13,9 @@ public class App {
         }
 
         TaskManager m = new TaskManager();
-        CommandParser c = new CommandParser(new AppContext(m));
+        AppContext context = new AppContext();
+        context.setTaskManager(m);
+        CommandParser c = new CommandParser(context);
         // TaskDataGenerator.test();
 
         // You should be add the command to the parser so that it can find your command.

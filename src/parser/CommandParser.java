@@ -2,13 +2,16 @@ package parser;
 
 import java.util.*;
 
+import core.TaskManager;
+
 public class CommandParser {
     // TODO 改为泛型的格式
     // private TaskManager taskManager;
 
-    private AppContext taskManagerContext;
+    // private AppContext context;  // context应该是一个过程式的组件 X forbid
 
     private List<Command> commandList;
+    private TaskManager taskManager;
     private static String noneCommandto = "help";
 
     // public CommandParser(TaskManager m){
@@ -16,8 +19,8 @@ public class CommandParser {
     //     commandList = new ArrayList<Command>();
     // }
 
-    public CommandParser(AppContext t){
-        taskManagerContext = t;
+    public CommandParser(AppContext taskManagerContext){
+        taskManager = taskManagerContext.getTaskManager();
         commandList = new ArrayList<Command>();
     }
 
@@ -35,7 +38,7 @@ public class CommandParser {
             for(Command command : commandList){
                 // if(noneCommandto == command.getName())
                 if(noneCommandto.equals(command.getName())){
-                    command.execute(args,taskManagerContext);
+                    command.execute(args,new AppContext(taskManager,commandList));
                     return;
                 }
             }
@@ -45,7 +48,7 @@ public class CommandParser {
         for(Command command : commandList){
             // if(args[0] == command.getName()){
             if(args[0].equals(command.getName())){
-                command.execute(args,taskManagerContext);
+                command.execute(args,new AppContext(taskManager,commandList));
                 return;   
             }
         }

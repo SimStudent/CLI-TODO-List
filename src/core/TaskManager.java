@@ -1,11 +1,17 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Task;
 
 public class TaskManager{
     private List<Task> tasks;  
+
+    public TaskManager(){
+        tasks = new ArrayList<>();
+    }
+
     public boolean addTask(Task t){
         return tasks.add(t);
     }
