@@ -13,6 +13,16 @@ public class ListCommand implements Command {
     }
 
     @Override
+    public String getDetailHelp(){
+        return """
+               Usage: todo list [query]
+
+               Lists all todos, or the tasks matching the supplied query.
+
+               """;
+    }
+
+    @Override
     public void execute(String[] args,AppContext context) {
         // TODO Finish the method.
     }
